@@ -3,7 +3,7 @@ import ResCard from "./ResCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import search from "../search.png";
 
 const Body = () => {
  
@@ -63,11 +63,11 @@ const Body = () => {
         value={InputValue} 
         onChange={(evt)=>{SetInputValue(evt.target.value);}}/>
 
-        <button className="bg-[#F35800] rounded-r-lg px-3 mt-4 text-white" onClick={handleSearch}>Search</button>
+        <button className="bg-[#F35800] rounded-r-lg px-5 mt-4 text-white" onClick={handleSearch}><img src={search} width={"20px"}></img></button>
 
         <div className="flex justify-center mt-4 gap-7 ml-[124px]">
-         <button className="bg-slate-200 tracking-wider rounded-xl px-3  hover:scale-[102%] transition-all" onClick={handleTopRes}>Top Restaurants</button>
-          <button className="bg-slate-200 tracking-wider rounded-xl px-3 mr-5 hover:scale-[102%] transition-all" onClick={handleFastest}>Fastest</button>
+         <button className="bg-white shadow-md tracking-wider rounded-xl px-3  hover:scale-[102%] transition-all" onClick={handleTopRes}>Top Restaurants</button>
+          <button className="bg-white shadow-md tracking-wider rounded-xl px-3 mr-5 hover:scale-[102%] transition-all" onClick={handleFastest}>Fastest</button>
       </div>
         
 
