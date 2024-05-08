@@ -52,9 +52,9 @@ const Body = () => {
      <h1 className="font-bold text-4xl text-gray-300 absolute left-52 top-52"> You are Offline ! Check your Internet Connection</h1>
     );
 
-  // if(ListOfRes.length===0){
-  //   return <Shimmer/>
-  // }
+  if(ListOfRes.length===0){
+    return <Shimmer/>
+  }
 
   return (
     <div className="bg-gray-100 mx-3 rounded-xl shadow-2xl h-auto mb-4 " >
