@@ -49,7 +49,7 @@ const Body = () => {
 
   if(onlineStatus===false) 
      return (
-     <h1 className="Online">You are Offline ! Check your Internet Connection</h1>
+     <h1 className="font-bold text-4xl text-gray-300 absolute left-52 top-52"> You are Offline ! Check your Internet Connection</h1>
     );
 
   if(ListOfRes.length===0){
@@ -82,7 +82,7 @@ const Body = () => {
                   <ResCard resDATA={resLIST[3]}/> */}
 
         {UpdatedSearch.map((res) => (
-          <Link className="card" to={"restaurant/"+res.info.id} key={res.info.id}><ResCard resDATA={res}/></Link> 
+          <Link  to={"restaurant/"+res.info.id} key={res.info.id}><ResCard resDATA={res}/></Link> 
         ))}
       </div> 
     </div>

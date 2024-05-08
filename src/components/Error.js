@@ -3,9 +3,8 @@ import logo from "../logo.png";
 
 const Error = () => {
     const err=useRouteError();
-    console.log(err);
   return (
-    <div className="error">
+    <div className="">
         <img src={logo}></img>
         <h1>Oooooooops.</h1>
         <h1>{err.status} : {err.statusText}</h1>
