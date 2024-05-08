@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ResCard from "./ResCard";
-import Shimmer from "./shimmer";
+import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 

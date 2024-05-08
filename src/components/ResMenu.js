@@ -1,4 +1,4 @@
-import Shimmer from "./shimmer";
+import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useResInfo from "../utils/useResInfo.js";
 import star from "../star.png";
