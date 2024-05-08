@@ -18,7 +18,7 @@ const Header = () => {
       <div >
         <ul className="flex items-center p-4 gap-14 text-xl font-semibold ">
           <li>
-            {onlineStatus? "🟢":"🔴"}
+            {onlineStatus?  "🟢":"🔴"}
           </li>
           <li className="hover:text-[#F35800] hover:scale-110 transition-all"> 
             <Link className="navbtn hovering" to="/">Home</Link></li>
