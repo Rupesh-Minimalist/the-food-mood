@@ -2,6 +2,8 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useResInfo from "../utils/useResInfo.js";
 import star from "../star.png";
+import logo from "../logo.png";
+import MenuCategory from "./MenuCategory.js";
 
 const ResMenu = () => {
   const { resMenuID } = useParams();
@@ -27,9 +29,16 @@ const ResMenu = () => {
     ResInfo?.cards[2]?.card?.card?.info.sla;
   const { amount } = ResInfo?.cards[2]?.card?.card?.info.feeDetails;
 
+ const Category=ResInfo.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+
+ console.log(Category);
+  
+
+
   return (
-    <div className="flex flex-col gap-9 items-center">
-      <div className="w-[800px]  flex flex-col justify-around rounded-2xl shadow-xl p-6">
+    <div className="flex flex-col gap-9 items-center mt-24 mb-4">
+      <div>
+        <div className="w-[800px]  flex flex-col justify-around rounded-2xl shadow-xl p-6">
         <div>
           <h1 className="text-3xl font-bold">{name}</h1>
         </div>
@@ -51,16 +60,36 @@ const ResMenu = () => {
           </span>
           <h1>₹{amount / 100} Delivery fee will apply</h1>
         </div>
-      </div>
-      <span className="-my-6">~~MENU~~</span>
-      <div>
-        <input className="w-[800px] h-[50px] border-1 border-slate-200 rounded-xl placeholder: pl-[43%] placeholder: bg-slate-100"placeholder="Search for Dishes"
-        ></input>
+        </div>
 
+        <span className="ml-[45%] pt-10">~~MENU~~</span>
+
+        <div>
+         <input className="w-[800px] h-[50px] border-1 border-slate-200 rounded-xl placeholder: pl-[43%] placeholder: bg-slate-100"placeholder="Search for Dishes"
+         ></input>
+        </div>
+      </div>
+
+      <div>
+        {Category.map((cat)=>
+            <MenuCategory data={cat?.card?.card} key={cat?.card?.card?.title}/>
+        )}
+      </div>
+
+
+    </div>
+  );
+};
+
+export default ResMenu;
+
+
+
+{/* 
         <ul className="font-semibold  ">
           {itemCards.map((item) => (
             <div className="flex justify-between items-center w-[800px] h-[210px] shadow-md mt-2 ">
-                <span className=" flex flex-col justify-center p-4">
+                <span className=" flex flex-col justify-center p-4 w-[790px]">
                   {item.card.info.name}{" "}
                   <p>
                     {"₹"}{" "}{+item.card.info.price / 100 || 
@@ -85,18 +114,15 @@ const ResMenu = () => {
                   </p>    
                 </span>
 
-                <span className="w-40 h-28 mr-3">
+                <span className="mr-3 w-3/12 flex justify-end ">  
                   <img
-                      className="rounded-xl w-20 h-20 object-cover" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item?.card?.info?.imageId}`}
-                     alt={item.card.info.name}/>
+                      className="rounded-xl w-28 h-28 object-cover" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item?.card?.info?.imageId}/>
+                  <span className="absolute">
+                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-2 text-green-500">ADD</button>   
+                  </span>
+                     
                 </span>
 
             </div>
           ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-export default ResMenu;
+        </ul> */}

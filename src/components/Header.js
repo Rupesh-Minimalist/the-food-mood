@@ -10,7 +10,7 @@ const Header = () => {
   
 
   return (
-    <div className="flex justify-between items-center shadow-xl m-3 bg-gray-100 rounded-md ">
+    <div className="flex justify-between items-center shadow-xl mx-3 bg-gray-100  rounded-md fixed top-0 w-full z-10">
       <div className="">
         <img className="w-52 mix-blend-multiply " src={logo} alt="Logo" />
       </div>

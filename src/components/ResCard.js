@@ -1,3 +1,5 @@
+import veg from "../veg.png";
+
 const ResCard=(props)=>{  //or direct destructiing: ResCard=({img,ResName,cuisine,ratings})=>{   
     const {resDATA}=props;
     return (
@@ -8,6 +10,20 @@ const ResCard=(props)=>{  //or direct destructiing: ResCard=({img,ResName,cuisin
             <h5 ><pre>{"Ratings: "}<span className="text-green-500">{resDATA.info.avgRating}</span>    {resDATA.info.sla.deliveryTime + " mins"}</pre></h5>
         </div> 
     )
+}
+
+export const ProResCard=(ResCard)=>{
+    return(props)=>{
+        return(
+
+            <div >
+                <label className="flex gap-1 absolute mt-3 px-2 py-1 bg-green-300 rounded-r-xl ">VEG <img className="" src={veg} width={"24px"}></img></label>
+                
+                <ResCard {...props}/>
+            </div>
+
+        )
+    }
 }
 
 export default ResCard;

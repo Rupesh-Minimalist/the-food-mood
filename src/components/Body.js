@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ResCard from "./ResCard";
+import ResCard , {ProResCard} from "./ResCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -11,6 +11,8 @@ const Body = () => {
   const [UpdatedSearch,SetUpdatedSearch]=useState([]);
 
   const [InputValue,SetInputValue]=useState("");
+
+  const ProResCardList=ProResCard(ResCard);
  
   useEffect(()=>{
     fetcher();
@@ -24,6 +26,7 @@ const Body = () => {
     let rest=ActualDATA?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     SetListOfRes(rest);
     SetUpdatedSearch(rest);
+    
   }
 
   const handleSearch=()=>{
@@ -57,7 +60,7 @@ const Body = () => {
   }
 
   return (
-    <div className="bg-gray-100 mx-3 rounded-xl shadow-2xl h-auto mb-4 " >
+    <div className="bg-gray-100 mt-20 z-0 mx-3 rounded-xl shadow-2xl h-auto mb-4 " >
       <div className="Search flex justify-end ">
         <input className="p-3 rounded-l-xl w-96  mt-4" type="text" placeholder="Search For Dishes & Restaurants" 
         value={InputValue} 
@@ -76,14 +79,15 @@ const Body = () => {
       
 
       <div className="flex justify-center flex-wrap gap-9  mt-4 ">
-        {/* Typical way 
-                  <ResCard resDATA={resLIST[1]}/>
-                  <ResCard resDATA={resLIST[15]}/>
-                  <ResCard resDATA={resLIST[3]}/> */}
-
         {UpdatedSearch.map((res) => (
-          <Link  to={"restaurant/"+res.info.id} key={res.info.id}><ResCard resDATA={res}/></Link> 
+          <Link to={"restaurant/"+res.info.id} key={res.info.id}>
+
+            {res.info.veg ?(<ProResCardList resDATA={res}/>): (<ResCard resDATA={res}/>) }
+            
+
+          </Link> 
         ))}
+        
       </div> 
     </div>
   );
