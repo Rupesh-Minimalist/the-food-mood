@@ -4,6 +4,9 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import search from "../search.png";
+import { useContext } from "react";
+import userContext from "../utils/UserContext";
+
 
 const Body = () => {
  
@@ -13,6 +16,8 @@ const Body = () => {
   const [InputValue,SetInputValue]=useState("");
 
   const ProResCardList=ProResCard(ResCard);
+
+  const {greeting}=useContext(userContext); // userContext
  
   useEffect(()=>{
     fetcher();
@@ -89,6 +94,8 @@ const Body = () => {
         ))}
         
       </div> 
+
+      <p className="py-6 absolute left-2/4 -translate-x-2/4">{greeting}</p> 
     </div>
   );
 };

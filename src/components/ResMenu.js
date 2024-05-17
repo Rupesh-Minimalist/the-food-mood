@@ -4,11 +4,17 @@ import useResInfo from "../utils/useResInfo.js";
 import star from "../star.png";
 import logo from "../logo.png";
 import MenuCategory from "./MenuCategory.js";
+import { useContext, useState } from "react";
+import userContext from "../utils/UserContext.js";
 
 const ResMenu = () => {
   const { resMenuID } = useParams();
 
   const ResInfo = useResInfo(resMenuID); // custom hook
+
+  const {greeting}=useContext(userContext)
+
+  // const [showIndex,setshowIndex]=useState(0)
 
   if (ResInfo === null) {
     return <Shimmer />;
@@ -32,10 +38,9 @@ const ResMenu = () => {
  const Category=ResInfo.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
 
  console.log(Category);
-  
-
 
   return (
+    <>
     <div className="flex flex-col gap-9 items-center mt-24 mb-4">
       <div>
         <div className="w-[800px]  flex flex-col justify-around rounded-2xl shadow-xl p-6">
@@ -71,58 +76,26 @@ const ResMenu = () => {
       </div>
 
       <div>
-        {Category.map((cat)=>
-            <MenuCategory data={cat?.card?.card} key={cat?.card?.card?.title}/>
+        {Category.map((cat,index)=>
+            <MenuCategory 
+            data={cat?.card?.card} 
+            key={cat?.card?.card?.title}
+            // showItems={index===showIndex ? true:false}   // Lifting the state up
+            // setshowIndex={()=>setshowIndex(index)}
+            />
+
         )}
       </div>
 
+      
+
 
     </div>
+    <p className="py-6 absolute left-2/4 -translate-x-2/4">{greeting}</p>
+    </>
   );
 };
 
 export default ResMenu;
 
 
-
-{/* 
-        <ul className="font-semibold  ">
-          {itemCards.map((item) => (
-            <div className="flex justify-between items-center w-[800px] h-[210px] shadow-md mt-2 ">
-                <span className=" flex flex-col justify-center p-4 w-[790px]">
-                  {item.card.info.name}{" "}
-                  <p>
-                    {"₹"}{" "}{+item.card.info.price / 100 || 
-                    item.card.info.defaultPrice / 100}
-                  </p>
-                  <div className="text-green-500 flex mt-2">
-                    <img src={star} width={"20px"}></img>
-                    {item?.card?.info?.ratings?.aggregatedRating?.rating}
-                    {
-                      <p className="text-gray-400 ">
-                        (
-                        {
-                          item?.card?.info?.ratings?.aggregatedRating
-                            ?.ratingCountV2
-                        }
-                        )
-                      </p>
-                    }
-                  </div>
-                  <p className="text-gray-400 mt-2">
-                    {item.card.info.description}
-                  </p>    
-                </span>
-
-                <span className="mr-3 w-3/12 flex justify-end ">  
-                  <img
-                      className="rounded-xl w-28 h-28 object-cover" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item?.card?.info?.imageId}/>
-                  <span className="absolute">
-                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-2 text-green-500">ADD</button>   
-                  </span>
-                     
-                </span>
-
-            </div>
-          ))}
-        </ul> */}

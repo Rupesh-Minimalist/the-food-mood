@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import MenuCatList from './MenuCatList';
 
-const MenuCategory = ({data}) => {
+const MenuCategory = ({data,setshowIndex}) => {
 
     const [showItems,SetshowItems]=useState(false);
 
+    // Remove Above to make this controlled Component - Lifting the state up
+
     const HandleClick=()=>{
-            
-        SetshowItems(!showItems); // for toggle !
+        
+        // setshowIndex();
+        SetshowItems(!showItems); // for toggle
     }
+
+    
     
   return (
 

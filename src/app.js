@@ -8,12 +8,15 @@ import Error from "./components/Error.js";
 import ResMenu from "./components/ResMenu.js";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 // import Grocery from "./components/Grocery.js"; beacuse Lazy function
+import userContext from "./utils/UserContext.js";
     
 const Applayout=()=>{
     return(
     <div className="Applayout">
-        <Header/>
-        <Outlet/>
+        <userContext.Provider value={{greeting:"Made With 💜 In India "}} >
+            <Header/>
+            <Outlet/>
+        </userContext.Provider>    
     </div>
     
     )
@@ -44,7 +47,7 @@ const AppRouter=createBrowserRouter([
                 path:"/grocery",
                 element:<Suspense fallback={<h1 className="fallback">LOADING GROCERY STORE.</h1>}>
                             <Grocery/>
-                       </Suspense>
+                        </Suspense>
             },
             {
                 path:"/restaurant/:resMenuID",

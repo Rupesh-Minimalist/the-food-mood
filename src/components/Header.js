@@ -3,12 +3,16 @@ import logo from "../logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
+
 const Header = () => {
 
   const [btnName,setbtnName]=useState("Login")
   const onlineStatus=useOnlineStatus();
-  
 
+ 
+
+
+  
   return (
     <div className="flex justify-between items-center shadow-xl mx-3 bg-gray-100  rounded-md fixed top-0 w-full z-10">
       <div className="">
@@ -46,6 +50,7 @@ const Header = () => {
               
           }}>{btnName}</button>
           
+         
         </ul>
       </div>
     </div>
