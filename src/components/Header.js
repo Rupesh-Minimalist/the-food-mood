@@ -9,21 +9,16 @@ const Header = () => {
   const [btnName,setbtnName]=useState("Login")
   const onlineStatus=useOnlineStatus();
 
- 
 
-
-  
   return (
-    <div className="flex justify-between items-center shadow-xl mx-3 bg-gray-100  rounded-md fixed top-0 w-full z-10">
+    <div className="flex justify-between items-center shadow-xl  bg-gray-100   fixed top-0 w-full z-10">
       <div className="">
-        <img className="w-52 mix-blend-multiply " src={logo} alt="Logo" />
+        <Link to="/"><img className="w-52 mix-blend-multiply " src={logo} alt="Logo" /></Link>
+        
       </div>
 
       <div >
         <ul className="flex items-center p-4 gap-14 text-xl font-semibold ">
-          <li>
-            {onlineStatus?  "🟢":"🔴"}
-          </li>
           <li className="hover:text-[#F35800] hover:scale-110 transition-all"> 
             <Link className="navbtn hovering" to="/">Home</Link></li>
           <li className="hover:text-[#F35800] hover:scale-110 transition-all"> 
@@ -36,7 +31,9 @@ const Header = () => {
             <Link className="navbtn hovering" to="/contact">Contact Us</Link>
           </li>
 
-          <li className="hover:text-[#F35800] hover:scale-110 transition-all">Cart</li>
+          <li className="hover:text-[#F35800] hover:scale-110 transition-all">
+            <Link className="" to="/cart">Cart</Link>
+          </li>
           <button className= "bg-[#8828C6] text-white rounded-lg p-2 hover:scale-110 transition-all " onClick={()=>{
             {
               if(btnName==="Login")

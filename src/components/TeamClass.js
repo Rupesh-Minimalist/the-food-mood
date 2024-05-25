@@ -29,20 +29,13 @@ class TeamCLass extends React.Component {
     return (
       <>
         <div>
-          <div className="absolute left-2/4 -translate-x-2/4 p-5  bg-slate-200 rounded-xl mt-5">
+          <div className="absolute left-2/4 -translate-x-2/4 p-5 bg-slate-50 rounded-xl mt-5">
             <img className="m-auto" src={avatar_url} width="200px"></img>
             <h3>Name: {name}</h3>
             <h4>Location: {location}</h4>
             {/* <h4>Email: {mail}</h4> */}
             <h4>YOE: {yoe}</h4>
-            <p>Up Votes: {Points}</p>
-            <button className="px-1 bg-slate-100 rounded-xl"
-              onClick={() => {
-                this.setState({
-                    Points:Points+1
-                })
-              }}
-            >RATE</button>
+            
           </div>
         </div>
       </>

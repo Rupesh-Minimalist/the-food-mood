@@ -4,7 +4,7 @@ import TeamClass from "./TeamClass";
 const About=()=>{
 
     return(
-        <div className="mt-28">
+        <div className="mt-28 w-4/5 absolute left-1/2 -translate-x-1/2 ">
             <h1 className="text-center font-bold text-4xl">ABOUT US</h1>
             <p className="text-center" >Welcome to The Food Mood, your ultimate destination for delightful food experiences delivered right to your doorstep. We are passionate about connecting food lovers with a diverse range of culinary delights, curated from the best local restaurants and eateries.</p>
     

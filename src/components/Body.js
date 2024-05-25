@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import ResCard , {ProResCard} from "./ResCard";
-import Shimmer from "./Shimmer";
+import HomeShimmer from "../shimmer/HomeShimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import search from "../search.png";
-import { useContext } from "react";
-import userContext from "../utils/UserContext";
-
 
 const Body = () => {
  
@@ -15,12 +12,13 @@ const Body = () => {
 
   const [InputValue,SetInputValue]=useState("");
 
-  const ProResCardList=ProResCard(ResCard);
+  const [activeButton, setActiveButton] = useState("Clear");
 
-  const {greeting}=useContext(userContext); // userContext
+  const ProResCardList=ProResCard(ResCard);
  
   useEffect(()=>{
     fetcher();
+
   },[]);
 
   async function fetcher(){
@@ -42,16 +40,16 @@ const Body = () => {
     SetUpdatedSearch(filteredSearch);
   }
   
-  const handleTopRes=() =>{
-    const filteredList = UpdatedSearch.filter((res) => res.info.avgRating>4.4);
+  // const handleTopRes=() =>{
+  //   const filteredList = UpdatedSearch.filter((res) => res.info.avgRating>4.4);
 
-    SetUpdatedSearch(filteredList); /// updating the state variable
-  }
+  //   SetUpdatedSearch(filteredList); /// updating the state variable
+  // }
 
-  const handleFastest=()=>{
-    const HighToLow=UpdatedSearch.filter((res)=>res.info.sla.deliveryTime<25);
-    SetUpdatedSearch(HighToLow);
-  }
+  // const handleFastest=()=>{
+  //   const HighToLow=UpdatedSearch.filter((res)=>res.info.sla.deliveryTime<25);
+  //   SetUpdatedSearch(HighToLow);
+  // }
 
   const onlineStatus=useOnlineStatus();
 
@@ -61,29 +59,89 @@ const Body = () => {
     );
 
   if(ListOfRes.length===0){
-    return <Shimmer/>
+    return <HomeShimmer/>
   }
 
+  const filters = [
+    {
+      name: "Clear",
+      filterFunc: () => {
+        SetUpdatedSearch(ListOfRes);
+      },
+    },
+    {
+      name: "Fast Delivery",
+      filterFunc: () => {
+        const fastDelivery = ListOfRes.filter(
+          (rest) => rest.info.sla.deliveryTime < 30
+        );
+        SetUpdatedSearch(fastDelivery);
+      },
+    },
+    {
+      name: "Top Rated",
+      filterFunc: () => {
+        const topRated = ListOfRes.filter(
+          (rest) => rest.info.avgRating > 4
+        );
+        SetUpdatedSearch(topRated);
+      },
+    },
+    {
+      name: "Pure Veg",
+      filterFunc: () => {
+        const onlyVeg = ListOfRes.filter((rest) => rest.info.veg == true);
+        SetUpdatedSearch(onlyVeg);
+      },
+    },
+    {
+      name: "Less than 300",
+      filterFunc: () => {
+        const lessThan300 = ListOfRes.filter(
+          (rest) => rest.info.costForTwo.match(/\d+/)[0] < 300 == true
+        );
+        SetUpdatedSearch(lessThan300);
+      },
+    },
+    
+  ];
+
+  const handleClick = (filter) => {
+    setActiveButton(filter.name);
+  };
+
   return (
-    <div className="bg-gray-100 mt-20 z-0 mx-3 rounded-xl shadow-2xl h-auto mb-4 " >
-      <div className="Search flex justify-end ">
-        <input className="p-3 rounded-l-xl w-96  mt-4" type="text" placeholder="Search For Dishes & Restaurants" 
+    <div className=" mt-16 mb-10  shadow-md h-auto  " >
+      <div className="flex justify-between pt-10 px-11">
+        <div className=" flex">
+        <input className="p-3 rounded-l-xl w-[530px] border-2" type="text" placeholder="Search For Dishes & Restaurants" 
         value={InputValue} 
         onChange={(evt)=>{SetInputValue(evt.target.value);}}/>
 
-        <button className="bg-[#F35800] rounded-r-lg px-5 mt-4 text-white" onClick={handleSearch}><img src={search} width={"20px"}></img></button>
-
-        <div className="flex justify-center mt-4 gap-7 ml-[124px]">
-         <button className="bg-white shadow-md tracking-wider rounded-xl px-3  hover:scale-[102%] transition-all" onClick={handleTopRes}>Top Restaurants</button>
-          <button className="bg-white shadow-md tracking-wider rounded-xl px-3 mr-5 hover:scale-[102%] transition-all" onClick={handleFastest}>Fastest</button>
-      </div>
+        <button className="bg-[#F35800] rounded-r-lg text-white p-3 " onClick={handleSearch}><img src={search} width={"20px"}></img></button>
+        </div>
         
 
+        {filters.map((filter, index) => (
+            <button
+              key={index}
+              className={`border px-3  shadow-sm rounded-[18px] ${
+                activeButton === filter.name &&
+                "border-4 font-bold text-[#fc8019]"
+              }`}
+              onClick={() => {
+                filter.filterFunc();
+                handleClick(filter);
+              }}
+            >
+              {filter.name}
+            </button>
+          ))}
+
+        
       </div>
 
-      
-
-      <div className="flex justify-center flex-wrap gap-9  mt-4 ">
+      <div className="flex justify-center flex-wrap gap-x-5 mt-6 ">
         {UpdatedSearch.map((res) => (
           <Link to={"restaurant/"+res.info.id} key={res.info.id}>
 
@@ -95,7 +153,7 @@ const Body = () => {
         
       </div> 
 
-      <p className="py-6 absolute left-2/4 -translate-x-2/4">{greeting}</p> 
+      
     </div>
   );
 };

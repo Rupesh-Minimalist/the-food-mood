@@ -1,4 +1,4 @@
-import Shimmer from "./Shimmer";
+import MenuPageShimmer from "../shimmer/MenuPageShimmer";
 import { useParams } from "react-router-dom";
 import useResInfo from "../utils/useResInfo.js";
 import star from "../star.png";
@@ -17,7 +17,7 @@ const ResMenu = () => {
   // const [showIndex,setshowIndex]=useState(0)
 
   if (ResInfo === null) {
-    return <Shimmer />;
+    return <MenuPageShimmer />;
   }
 
   const {
@@ -63,14 +63,15 @@ const ResMenu = () => {
           <span className="font-semibold">
             {minDeliveryTime}-{maxDeliveryTime} mins
           </span>
+          <div className="border  my-2"> </div>
           <h1>₹{amount / 100} Delivery fee will apply</h1>
         </div>
         </div>
 
-        <span className="ml-[45%] pt-10">~~MENU~~</span>
+        <div className="ml-[45%] mt-5">~~MENU~~</div>
 
         <div>
-         <input className="w-[800px] h-[50px] border-1 border-slate-200 rounded-xl placeholder: pl-[43%] placeholder: bg-slate-100"placeholder="Search for Dishes"
+         <input className="w-[800px] h-[50px] border-1 border-slate-200 rounded-xl placeholder: pl-[43%] placeholder: bg-slate-100 mt-6"placeholder="Search for Dishes"
          ></input>
         </div>
       </div>
