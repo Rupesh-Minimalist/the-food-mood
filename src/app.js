@@ -18,6 +18,7 @@ const Applayout=()=>{
         <userContext.Provider value={{greeting:"Made With 💜 In India "}} >
             <Header/>
             <Outlet/>
+            <Footer/>
         </userContext.Provider>    
     </div>
     
@@ -35,11 +36,8 @@ const AppRouter=createBrowserRouter([
         [
             {
                 path:"/",
-                element:(
-                 <>  
-                    <Body/>
-                    <Footer/> 
-                 </>    
+                element:(  
+                    <Body/>  
                 )
             },
             {

@@ -63,12 +63,7 @@ const Body = () => {
   }
 
   const filters = [
-    {
-      name: "Clear",
-      filterFunc: () => {
-        SetUpdatedSearch(ListOfRes);
-      },
-    },
+    
     {
       name: "Fast Delivery",
       filterFunc: () => {
@@ -103,6 +98,12 @@ const Body = () => {
         SetUpdatedSearch(lessThan300);
       },
     },
+    {
+      name: "Clear",
+      filterFunc: () => {
+        SetUpdatedSearch(ListOfRes);
+      },
+    },
     
   ];
 
@@ -111,7 +112,7 @@ const Body = () => {
   };
 
   return (
-    <div className=" mt-16 mb-10  shadow-md h-auto  " >
+    <div className=" mt-16   shadow-md h-auto  " >
       <div className="flex justify-between pt-10 px-11">
         <div className=" flex">
         <input className="p-3 rounded-l-xl w-[530px] border-2" type="text" placeholder="Search For Dishes & Restaurants" 

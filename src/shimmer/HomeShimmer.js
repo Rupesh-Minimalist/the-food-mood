@@ -13,7 +13,7 @@ const Shimmer = () => {
           />
         </div>
         <div className="font-semibold text-xl md:text-4xl text-blue-950">
-          Looking for great food near you...
+          Looking for the food that matches your Mooood...
         </div>
       </div>
       <div className="max-w-[1200px] mx-auto p-[15px] ">

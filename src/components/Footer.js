@@ -9,18 +9,18 @@ const Footer = () => {
 
     const {greeting}=useContext(userContext); // userContext
   return (
-    <footer className="bg-white ">
-      <div className="max-w-[1200px] max-h-[230px] p-10">
+    <footer className="bg-purple-900 ">
+      <div className="max-w-[1200px] max-h-[260px] p-10">
         <div className="flex justify-between">
           <ul className="flex flex-col ">
             <li className="flex items-center">
               <Link to="/">
-                <img src={logo} alt="logo" className="w-24 inline mr-3" />
+                <img src={logo} alt="logo" className="w-28 inline mr-3" />
               </Link>
-              <span className="font-semibold text-2xl ">TheFoodMood</span>
+              <span className="font-semibold text-2xl text-orange-500">The Food Mood</span>
             </li>
             <li className="text-gray-400 my-2">
-              &copy; 2024 TFM Technologies Pvt. Ltd
+              &copy; 2024 TFM Technologies Private Ltd Ind
             </li>
           </ul>
           <ul className="flex flex-col">
@@ -28,7 +28,7 @@ const Footer = () => {
             {aboutCompany.map((item, ind) => (
               <li
                 key={ind}
-                className="text-gray-400 hover:text-orange-500  cursor-pointer my-1"
+                className="text-white hover:text-orange-500  cursor-pointer my-1"
               >
                 {item}
               </li>
@@ -39,7 +39,7 @@ const Footer = () => {
             {contact.map((item, ind) => (
               <li
                 key={ind}
-                className="text-gray-400 hover:text-orange-500 cursor-pointer my-1"
+                className="text-white hover:text-orange-500 cursor-pointer my-1"
               >
                 {item}
               </li>
@@ -51,7 +51,7 @@ const Footer = () => {
             {locationObject.map((loc, ind) => (
               <li
                 key={ind}
-                className="text-gray-400 hover:text-orange-500 cursor-pointer my-1"
+                className="text-white hover:text-orange-500 cursor-pointer my-1"
               >
                 {loc.city}
               </li>
@@ -59,7 +59,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <p className="py-6 absolute left-2/4 -translate-x-2/4">{greeting}</p> 
+      <p className="py-6  text-white  bg-purple-900 w-full text-center">{greeting}</p> 
     </footer>
   );
 };

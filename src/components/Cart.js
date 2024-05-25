@@ -12,10 +12,9 @@ const Cart = () => {
     scrollToTop();
   }, []);
 
-  
 
   return (
-    <div className="flex items-center justify-center cart-height w-full mt-28">
+    <div className="flex items-center justify-center cart-height w-full mt-28 mb-16">
       <div>
         <img src={CDN_URL + "2xempty_cart_yfxml0"} />
         <div className="text-center my-3 font-bold text-xl">

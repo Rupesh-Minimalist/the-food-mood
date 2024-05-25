@@ -1,15 +1,12 @@
 import { useState } from "react";
 import logo from "../logo.png";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 
 const Header = () => {
 
-  const [btnName,setbtnName]=useState("Login")
-  const onlineStatus=useOnlineStatus();
-
-
+  
   return (
     <div className="flex justify-between items-center shadow-xl  bg-gray-100   fixed top-0 w-full z-10">
       <div className="">
@@ -31,21 +28,10 @@ const Header = () => {
             <Link className="navbtn hovering" to="/contact">Contact Us</Link>
           </li>
 
-          <li className="hover:text-[#F35800] hover:scale-110 transition-all">
+          <li className="hover:text-[#F35800] hover:scale-110 transition-all pr-5">
             <Link className="" to="/cart">Cart</Link>
           </li>
-          <button className= "bg-[#8828C6] text-white rounded-lg p-2 hover:scale-110 transition-all " onClick={()=>{
-            {
-              if(btnName==="Login")
-              {
-                setbtnName("Logout")
-              }
-              else{
-                setbtnName("Login")
-              }
-            }
-              
-          }}>{btnName}</button>
+          
           
          
         </ul>
