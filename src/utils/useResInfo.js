@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 const useResInfo = (resMenuID) => {
 
   const [ResInfo, setResInfo] = useState(null);
+  
 
   useEffect(() => {
     Menufetch();
@@ -15,8 +16,9 @@ const useResInfo = (resMenuID) => {
         "&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER"
     );
     let ActualDATA = await response.json();
-
     setResInfo(ActualDATA.data);
+
+    
    }
   return ResInfo;
 };

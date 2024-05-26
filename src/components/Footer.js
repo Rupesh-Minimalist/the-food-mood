@@ -10,17 +10,17 @@ const Footer = () => {
     const {greeting}=useContext(userContext); // userContext
   return (
     <footer className="bg-purple-900 ">
-      <div className="max-w-[1200px] max-h-[260px] p-10">
-        <div className="flex justify-between">
+       <div className="max-w-[1200px] mx-auto p-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2">
           <ul className="flex flex-col ">
             <li className="flex items-center">
               <Link to="/">
-                <img src={logo} alt="logo" className="w-28 inline mr-3" />
+                <img src={logo} alt="logo" className="w-40 inline mr-3 relative -left-3" />
               </Link>
-              <span className="font-semibold text-2xl text-orange-500">The Food Mood</span>
+              <span className="font-semibold text-2xl text-orange-500"></span>
             </li>
             <li className="text-gray-400 my-2">
-              &copy; 2024 TFM Technologies Private Ltd Ind
+              &copy; 2024 TFM Technologies
             </li>
           </ul>
           <ul className="flex flex-col">
@@ -59,7 +59,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <p className="py-6  text-white  bg-purple-900 w-full text-center">{greeting}</p> 
+      <p className="py-6  text-white  bg-purple-900 w-full text-center ">{greeting}</p> 
     </footer>
   );
 };

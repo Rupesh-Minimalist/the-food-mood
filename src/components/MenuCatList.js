@@ -8,7 +8,7 @@ const MenuCatList = ({data}) => {
         <div className="font-semibold  ">
           {data.map((item) => ( 
             <div className="flex justify-between items-center w-[760px] h-[250px] shadow-sm mt-2 ">
-                <span className=" flex flex-col justify-center p-4 w-[790px]">
+                <span className=" flex flex-col justify-center p-4 w-[750px]">
                   {item.card.info.name}{" "}
                   <p>
                     {"₹"}{" "}{+item.card.info.price / 100 || 
@@ -35,9 +35,9 @@ const MenuCatList = ({data}) => {
 
                 <span className="mr-3 w-3/12 flex justify-end ">  
                   <img
-                      className="rounded-xl w-28 h-28 object-cover" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item?.card?.info?.imageId}/>
+                      className="rounded-xl w-28 h-28 object-cover mr-3" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item?.card?.info?.imageId}/>
                   <span className="absolute">
-                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-2 text-green-500">ADD</button>   
+                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-5 text-green-500">ADD</button>   
                   </span>
                      
                 </span>

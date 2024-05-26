@@ -5,7 +5,7 @@ const ResCard=(props)=>{  //or direct destructiing: ResCard=({img,ResName,cuisin
     const {resDATA}=props;
     return (
         <div className="">
-          <div className="rounded-2xl flex flex-col h-[280px] w-[280px] hover:scale-[98%] transition-all shadow-md mb-16  mt-2 z-10">
+          <div className="rounded-2xl flex flex-col h-[280px] w-[280px] hover:scale-[96%] transition-all shadow-md mb-5 z-10">
             <div className="w-[265px] h-44 mb-4">
                 <img className="  rounded-2xl object-cover w-full h-full mx-2 my-2 " src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resDATA.info.cloudinaryImageId} ></img>
             </div>
