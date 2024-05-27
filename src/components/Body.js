@@ -22,7 +22,7 @@ const Body = () => {
 
   async function fetcher() {
     try {
-      let response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      let response = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       let ActualDATA = await response.json();
       let rest = ActualDATA?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       SetListOfRes(rest);
@@ -34,7 +34,7 @@ const Body = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const response = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const data = await response.json();
       const Actual = data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info || [];
       setCarouselImages(Actual);
@@ -118,7 +118,7 @@ const Body = () => {
     <>
       <Categories carouselImages={carouselImages} />
 
-      <div className="shadow-md h-auto ">
+      <div className="h-auto mx-24 mt-3 mb-5 ">
         <div className="flex justify-around pt-5 flex-wrap ">
           <div className="flex-wrap  md:flex gap-6 m">
             <div className="flex">

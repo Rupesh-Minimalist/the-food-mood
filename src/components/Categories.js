@@ -13,7 +13,7 @@ const Categories = ({ carouselImages }) => {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto mt-20">
+    <div className="max-w-[1050px] mx-auto mt-20 ">
       <div className="flex items-center justify-between my-3">
         <div className="text-[25px] font-bold pt-[15px] opacity-50 ">
           What's on your mind?
