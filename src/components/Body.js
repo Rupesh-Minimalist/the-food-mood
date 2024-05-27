@@ -3,8 +3,9 @@ import ResCard, { ProResCard } from "./ResCard";
 import HomeShimmer from "../shimmer/HomeShimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import search from "../search.png";
+import search from "../images/search.png";
 import Categories from "./Categories";
+import {RESTAURANT_LIST} from "../utils/constants"
 
 const Body = () => {
   const [ListOfRes, SetListOfRes] = useState([]);
@@ -22,7 +23,7 @@ const Body = () => {
 
   async function fetcher() {
     try {
-      let response = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      let response = await fetch(RESTAURANT_LIST);
       let ActualDATA = await response.json();
       let rest = ActualDATA?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       SetListOfRes(rest);
@@ -34,7 +35,7 @@ const Body = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const response = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const response = await fetch(RESTAURANT_LIST);
       const data = await response.json();
       const Actual = data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info || [];
       setCarouselImages(Actual);

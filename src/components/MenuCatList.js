@@ -1,5 +1,5 @@
 import React from 'react'
-import star from "../star.png";
+import star from "../images/star.png";
 
 const MenuCatList = ({data}) => {
   return (

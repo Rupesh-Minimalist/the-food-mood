@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../logo.png";
+import logo from "../images/logo.png";
 import { aboutCompany, contact, locationObject } from "../utils/constants";
 import { useContext } from "react";
 import userContext from "../utils/UserContext";

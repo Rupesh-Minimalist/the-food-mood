@@ -11,7 +11,7 @@ const useResInfo = (resMenuID) => {
 
   async function Menufetch() {
     let response = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.8466937&lng=80.94616599999999&restaurantId=" +
+      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.8466937&lng=80.94616599999999&restaurantId=" +
         resMenuID +
         "&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER"
     );

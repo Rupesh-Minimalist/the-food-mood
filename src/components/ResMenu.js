@@ -1,8 +1,8 @@
 import MenuPageShimmer from "../shimmer/MenuPageShimmer";
 import { useParams } from "react-router-dom";
 import useResInfo from "../utils/useResInfo.js";
-import star from "../star.png";
-import logo from "../logo.png";
+import star from "../images/star.png";
+import logo from "../images/logo.png";
 import MenuCategory from "./MenuCategory.js";
 import { useContext, useState } from "react";
 import userContext from "../utils/UserContext.js";

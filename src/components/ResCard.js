@@ -1,5 +1,5 @@
-import veg from "../veg.png";
-import star from "../star.png";
+import veg from "../images/veg.png";
+import star from "../images/star.png";
 
 const ResCard=(props)=>{  //or direct destructiing: ResCard=({img,ResName,cuisine,ratings})=>{   
     const {resDATA}=props;
