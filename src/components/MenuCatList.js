@@ -1,7 +1,18 @@
 import React from 'react'
 import star from "../images/star.png";
+import { addItem } from '../redux/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const MenuCatList = ({data}) => {
+
+  const dispatch=useDispatch();
+
+  const handleAddItem=(item)=>{
+
+      dispatch(addItem(item));
+  };
+
+
   return (
     <div>
         
@@ -37,7 +48,8 @@ const MenuCatList = ({data}) => {
                   <img
                       className="rounded-xl w-28 h-28 object-cover mr-3" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item?.card?.info?.imageId}/>
                   <span className="absolute">
-                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-5 text-green-500">ADD</button>   
+                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-5 text-green-500" onClick={()=>handleAddItem(item)}>ADD
+                    </button>   
                   </span>
                      
                 </span>

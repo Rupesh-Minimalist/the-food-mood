@@ -6,12 +6,17 @@ import logo from "../images/logo.png";
 import MenuCategory from "./MenuCategory.js";
 import { useContext, useState } from "react";
 import userContext from "../utils/UserContext.js";
+import { scrollToTop } from "../utils/helper.js";
+import { useEffect } from "react";
 
 const ResMenu = () => {
   const { resMenuID } = useParams();
 
   const ResInfo = useResInfo(resMenuID); // custom hook
 
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   if (ResInfo === null) {
     return <MenuPageShimmer />;

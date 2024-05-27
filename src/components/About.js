@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { scrollToTop } from "../utils/helper";
+
+    
 
 import TeamClass from "./TeamClass";
 
 const About=()=>{
+
+    
+useEffect(() => {
+    scrollToTop();
+  }, []);
+
 
     return(
         <div className="mt-28 mb-96 text-center  ">

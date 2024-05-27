@@ -1,5 +1,13 @@
+import { useEffect } from "react";
+import { scrollToTop } from "../utils/helper";
+
 const Grocery=()=>{
 
+    useEffect(() => {
+        scrollToTop();
+      }, []);
+
+      
     return(
         <>
         <div className="flex justify-center mb-36">

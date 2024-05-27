@@ -6,6 +6,9 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import search from "../images/search.png";
 import Categories from "./Categories";
 import {RESTAURANT_LIST} from "../utils/constants"
+import {RESTAURANT_LIST2} from "../utils/constants"
+import { scrollToTop } from "../utils/helper.js";
+
 
 const Body = () => {
   const [ListOfRes, SetListOfRes] = useState([]);
@@ -19,6 +22,7 @@ const Body = () => {
   useEffect(() => {
     fetchRestaurants();
     fetcher();
+    scrollToTop();
   }, []);
 
   async function fetcher() {

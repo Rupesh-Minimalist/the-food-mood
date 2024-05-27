@@ -11,15 +11,19 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import userContext from "./utils/UserContext.js";
 import Footer from "./components/Footer.js";
 import Cart from "./components/Cart";
+import { Provider } from "react-redux";
+import appStore from "./redux/appStore.js";
     
 const Applayout=()=>{
     return(
     <div className="Applayout">
+       <Provider store={appStore}>
         <userContext.Provider value={{greeting:"Made With 💜 In India "}} >
             <Header/>
             <Outlet/>
             <Footer/>
-        </userContext.Provider>    
+        </userContext.Provider>
+        </Provider>      
     </div>
     
     )

@@ -1,13 +1,16 @@
 import { useState } from "react";
 import logo from "../images/logo.png"
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const cartItems=useSelector((store)=>store.cart.items) // subscribing
+ 
   return (
-    <div className="flex justify-around items-center shadow-xl bg-gray-100 fixed top-0 w-full z-20">
-      <div className="flex items-center justify-between w-full p-4 md:p-0">
+    <div className="flex justify-between items-center shadow-xl bg-gray-100 fixed top-0 w-full z-20">
+      <div className="flex items-center justify-between  p-4 md:p-0">
         <Link to="/">
           <img className="w-32 md:w-52 mix-blend-multiply" src={logo} alt="Logo" />
         </Link>
@@ -21,21 +24,23 @@ const Header = () => {
       </div>
 
       <div className={`flex-col md:flex md:flex-row md:items-center md:gap-14 text-xl font-semibold ${isMenuOpen ? 'flex' : 'hidden'} md:flex`}>
-        <ul className="flex flex-col md:flex-row items-center p-4 md:p-0 gap-4 md:gap-14">
+        <ul className="flex flex-col md:flex-row  items-center p-4 md:p-0 gap-4 md:gap-14">
           <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link className="navbtn hovering" to="/">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link className="navbtn hovering" to="/grocery">Grocery</Link>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link className="navbtn hovering" to="/about">About</Link>
+            <Link  to="/about">About</Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link className="navbtn hovering" to="/contact">Contact</Link>
+            <Link  to="/contact">Contact</Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all pr-5">
-            <Link className="" to="/cart">Cart</Link>
+            <Link  to="/cart">
+              Cart ({cartItems.length})
+            </Link>
           </li>
         </ul>
       </div>
