@@ -12,7 +12,6 @@ const ResMenu = () => {
 
   const ResInfo = useResInfo(resMenuID); // custom hook
 
-  const { greeting } = useContext(userContext);
 
   if (ResInfo === null) {
     return <MenuPageShimmer />;
