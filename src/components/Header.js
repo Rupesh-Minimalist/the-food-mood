@@ -2,6 +2,12 @@ import { useState } from "react";
 import logo from "../images/logo.png"
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { IoHomeOutline } from "react-icons/io5";
+import { CiShoppingBasket } from "react-icons/ci";
+import { IoInformationCircleOutline } from "react-icons/io5";
+import { RiContactsLine } from "react-icons/ri";
+import { FiShoppingCart } from "react-icons/fi";
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,21 +31,46 @@ const Header = () => {
 
       <div className={`flex-col md:flex md:flex-row md:items-center md:gap-14 text-xl font-semibold ${isMenuOpen ? 'flex' : 'hidden'} md:flex`}>
         <ul className="flex flex-col md:flex-row  items-center p-4 md:p-0 gap-4 md:gap-14">
-          <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link to="/">Home</Link>
+          <li className="hover:text-[#F35800] hover:scale-105 transition-all ">
+            <Link to="/">
+              <span className="flex gap-1 items-center">
+               <IoHomeOutline /> 
+                Home
+              </span>
+            </Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link to="/grocery">Grocery</Link>
+            <Link to="/grocery">
+              <span className="flex items-center gap-1">
+               <CiShoppingBasket />
+                Grocery
+              </span>
+            </Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link  to="/about">About</Link>
+            <Link  to="/about">
+             <span className="flex items-center gap-1">
+               <IoInformationCircleOutline />
+                About
+             </span>
+              
+            </Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all">
-            <Link  to="/contact">Contact</Link>
+            <Link to="/contact">
+              <span className="flex items-center gap-1">
+                <RiContactsLine />
+                Contact
+              </span>
+              
+            </Link>
           </li>
           <li className="hover:text-[#F35800] hover:scale-105 transition-all pr-5">
             <Link  to="/cart">
-              Cart ({cartItems.length})
+              <span className="flex items-center gap-1">
+              <FiShoppingCart />
+              ({cartItems.length})
+              </span>
             </Link>
           </li>
         </ul>
