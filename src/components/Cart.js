@@ -56,7 +56,7 @@ const Cart = () => {
       <div className="flex justify-between">
         <div className="text-[25px] font-extrabold m-5">Cart Items</div>
         <button
-          className="bg-[#fc8019] my-5 text-white rounded-lg cursor-pointer font-bold shadow-lg px-4 py-2"
+          className="bg-[#fc8019] my-5 text-white rounded-lg cursor-pointer font-bold shadow-lg px-4 py-2 "
           onClick={() => {
             dispatch(clearCart());
           }}
@@ -72,7 +72,7 @@ const Cart = () => {
             key={item?.card?.info?.id}
           >
             <div>
-              <p>{item?.card?.info?.name}</p>
+              <p className="font-bold">{item?.card?.info?.name}</p>
               <p>
                 ₹{" "}
                 {item?.card?.info?.price / 100 ||
@@ -90,7 +90,7 @@ const Cart = () => {
               </div>
               <div className="absolute left-9 top-[105px]">
                 <button
-                  className="bg-white text-[#fc8019] font-bold shadow-lg px-4 py-2 rounded-lg"
+                  className="bg-white text-[#fc8019] font-bold shadow-lg px-4 py-2 rounded-lg hover:bg-slate-100"
                   onClick={() => {
                     dispatch(removeItem({ id: item?.card?.info?.id }));
                   }}
@@ -103,8 +103,12 @@ const Cart = () => {
           <div className="border px-10 my-6" />
         </React.Fragment>
       ))}
-      <div className="shadow-lg p-4 h-44 font-bold text-black">
-        <p className="text-xl">Bill Details</p>
+      <div className="shadow-lg p-4 h-52 font-bold text-black mb-3">
+        <p className="text-xl mb-2">Bill Details</p>
+        <div className="flex justify-between">
+          <p>Item Qty :</p>
+          <p> {cartItems.length} nos</p>
+        </div>
         <div className="flex justify-between">
           <p>Item Total :</p>
           <p>₹ {totalCost}</p>
@@ -112,7 +116,7 @@ const Cart = () => {
         <div className="border-2 px-10 my-2" />
         <div className="flex justify-between">
           <p>To Pay:</p>
-          <p> ₹ {totalCost}</p>
+          <p> ₹ {totalCost}/-</p>
         </div>
         <div className="w-72 mx-auto text-center p-2 bg-[#fc8019] my-2 text-white font-semibold cursor-pointer rounded-xl">
           Proceed to Pay

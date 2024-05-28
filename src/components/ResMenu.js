@@ -2,17 +2,15 @@ import MenuPageShimmer from "../shimmer/MenuPageShimmer";
 import { useParams } from "react-router-dom";
 import useResInfo from "../utils/useResInfo.js";
 import star from "../images/star.png";
-import logo from "../images/logo.png";
 import MenuCategory from "./MenuCategory.js";
-import { useContext, useState } from "react";
-import userContext from "../utils/UserContext.js";
+import { useState, useEffect } from "react";
 import { scrollToTop } from "../utils/helper.js";
-import { useEffect } from "react";
 
 const ResMenu = () => {
   const { resMenuID } = useParams();
-
   const ResInfo = useResInfo(resMenuID); // custom hook
+
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     scrollToTop();
@@ -38,8 +36,17 @@ const ResMenu = () => {
   const { amount } = ResInfo?.cards[2]?.card?.card?.info.feeDetails;
 
   const Category = ResInfo.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-    (c) => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    (c) =>
+      c.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
+
+  const filteredCategories = Category.map((cat) => {
+    const filteredItems = cat.card.card.itemCards.filter((item) =>
+      item.card.info.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    return { ...cat, card: { ...cat.card, card: { ...cat.card.card, itemCards: filteredItems } } };
+  }).filter(cat => cat.card.card.itemCards.length > 0);
 
   return (
     <>
@@ -73,19 +80,25 @@ const ResMenu = () => {
 
           <div className="mt-6">
             <input
-              className="w-full h-[50px] border-1 border-slate-200 rounded-xl placeholder:text-center bg-slate-100"
+              className="w-full h-[50px] border-1 border-slate-200 rounded-xl placeholder:text-center bg-slate-100 p-3"
               placeholder="Search for Dishes"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
 
         <div className="w-full max-w-3xl">
-          {Category.map((cat, index) => (
-            <MenuCategory 
-              data={cat?.card?.card}
-              key={cat?.card?.card?.title}
-            />
-          ))}
+          {filteredCategories.length > 0 ? (
+            filteredCategories.map((cat) => (
+              <MenuCategory
+                data={cat?.card?.card}
+                key={cat?.card?.card?.title}
+              />
+            ))
+          ) : (
+            <div className="text-center mt-5">No dishes found</div>
+          )}
         </div>
       </div>
     </>

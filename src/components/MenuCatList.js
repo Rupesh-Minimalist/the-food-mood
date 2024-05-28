@@ -48,7 +48,7 @@ const MenuCatList = ({data}) => {
                   <img
                       className="rounded-xl w-28 h-28 object-cover mr-3" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item?.card?.info?.imageId}/>
                   <span className="absolute">
-                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-5 text-green-500" onClick={()=>handleAddItem(item)}>ADD
+                    <button className="shadow-lg bg-white px-7 rounded-xl mt-24 mr-5 text-green-500 hover:bg-slate-100" onClick={()=>handleAddItem(item)}>ADD
                     </button>   
                   </span>
                      
