@@ -1,6 +1,6 @@
 -Header
 Logo 
-NAv items
+Nav items
 
 -Body
 Restaurant container

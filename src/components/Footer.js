@@ -7,7 +7,8 @@ import userContext from "../utils/UserContext";
 
 const Footer = () => {
 
-    const {greeting}=useContext(userContext); // userContext
+  const {greeting}=useContext(userContext); // userContext
+  
   return (
     <footer className="bg-purple-900 ">
        <div className="max-w-[1100px] mx-auto p-10">

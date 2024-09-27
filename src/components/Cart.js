@@ -73,7 +73,7 @@ const Cart = () => {
           >
             <div>
               <p className="font-bold">{item?.card?.info?.name}</p>
-              <p>
+              <p className="font font-bold">
                 ₹{" "}
                 {item?.card?.info?.price / 100 ||
                   item?.card?.info?.defaultPrice / 100}
@@ -103,7 +103,7 @@ const Cart = () => {
           <div className="border px-10 my-6" />
         </React.Fragment>
       ))}
-      <div className="shadow-lg p-4 h-52 font-bold text-black mb-3">
+      <div className="shadow-lg p-4 h-62 font-bold text-black mb-3">
         <p className="text-xl mb-2">Bill Details</p>
         <div className="flex justify-between">
           <p>Item Qty :</p>
@@ -113,10 +113,18 @@ const Cart = () => {
           <p>Item Total :</p>
           <p>₹ {totalCost}</p>
         </div>
+        <div className="flex justify-between">
+          <p>5% GST :</p>
+          <p>₹ {(totalCost*5)/100}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Delivery Fee :</p>
+          <p>₹ {totalCost/25}</p>
+        </div>
         <div className="border-2 px-10 my-2" />
         <div className="flex justify-between">
           <p>To Pay:</p>
-          <p> ₹ {totalCost}/-</p>
+          <p> ₹ {Math.floor(totalCost+(totalCost*5)/100+(totalCost/25))}/-</p>
         </div>
         <div className="w-72 mx-auto text-center p-2 bg-[#fc8019] my-2 text-white font-semibold cursor-pointer rounded-xl">
           Proceed to Pay

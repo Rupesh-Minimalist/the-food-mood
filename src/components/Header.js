@@ -12,7 +12,7 @@ import { FiShoppingCart } from "react-icons/fi";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const cartItems=useSelector((store)=>store.cart.items) // subscribing
+  const cartItems=useSelector((store)=>store.cart.items) 
  
   return (
     <div className="flex justify-between items-center shadow-xl bg-gray-100 fixed top-0 w-full z-20">

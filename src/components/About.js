@@ -1,8 +1,5 @@
 import { useEffect } from "react";
 import { scrollToTop } from "../utils/helper";
-
-    
-
 import TeamClass from "./TeamClass";
 
 const About=()=>{

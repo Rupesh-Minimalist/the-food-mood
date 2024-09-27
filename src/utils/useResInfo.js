@@ -5,7 +5,6 @@ const useResInfo = (resMenuID) => {
 
   const [ResInfo, setResInfo] = useState(null);
   
-
   useEffect(() => {
     Menufetch();
   }, []);
@@ -15,8 +14,8 @@ const useResInfo = (resMenuID) => {
     let ActualDATA = await response.json();
     setResInfo(ActualDATA.data);
 
-    
-   }
+  }
+  
   return ResInfo;
 };
 

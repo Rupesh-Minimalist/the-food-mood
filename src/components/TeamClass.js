@@ -33,7 +33,6 @@ class TeamCLass extends React.Component {
             <img className="m-auto" src={avatar_url} width="200px"></img>
             <h3>Name: {name}</h3>
             <h4>Location: {location}</h4>
-            {/* <h4>Email: {mail}</h4> */}
             <h4>YOE: {yoe}</h4>
             
           </div>

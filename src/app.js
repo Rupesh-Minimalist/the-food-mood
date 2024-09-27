@@ -23,7 +23,7 @@ const Applayout=()=>{
             <Outlet/>
             <Footer/>
         </userContext.Provider>
-        </Provider>      
+       </Provider>      
     </div>
     
     )

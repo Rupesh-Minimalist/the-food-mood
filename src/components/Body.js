@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import search from "../images/search.png";
 import Categories from "./Categories";
-import {RESTAURANT_LIST} from "../utils/constants"
-import {RESTAURANT_LIST2} from "../utils/constants"
+import { RESTAURANT_LIST } from "../utils/constants";
+import { RESTAURANT_LIST2 } from "../utils/constants";
 import { scrollToTop } from "../utils/helper.js";
-
 
 const Body = () => {
   const [ListOfRes, SetListOfRes] = useState([]);
@@ -27,9 +26,11 @@ const Body = () => {
 
   async function fetcher() {
     try {
-      let response = await fetch(RESTAURANT_LIST);
+      let response = await fetch(RESTAURANT_LIST2); // proxy 
       let ActualDATA = await response.json();
-      let rest = ActualDATA?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      let rest =
+        ActualDATA?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
       SetListOfRes(rest);
       SetUpdatedSearch(rest);
     } catch (error) {
@@ -39,9 +40,11 @@ const Body = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const response = await fetch(RESTAURANT_LIST);
+      const response = await fetch(RESTAURANT_LIST2);
       const data = await response.json();
-      const Actual = data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info || [];
+      const Actual =
+        data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info ||
+        [];
       setCarouselImages(Actual);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -53,23 +56,25 @@ const Body = () => {
       res.info.name.toLowerCase().includes(InputValue.toLowerCase())
     );
     SetUpdatedSearch(filteredSearch);
-  }
+  };
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
       handleSearch();
     }
-  }
+  };
 
   const onlineStatus = useOnlineStatus();
 
-  if (onlineStatus === false) 
+  if (onlineStatus === false)
     return (
-      <h1 className="font-bold text-4xl text-gray-300 py-32 text-center  ">You are Offline! Check your Internet Connection</h1>
-    );
+      <h1 className="font-bold text-4xl text-gray-300 py-32 text-center  ">
+        You are Offline! Check your Internet Connection
+      </h1>
+  );
 
   if (ListOfRes.length === 0) {
-    return <HomeShimmer/>
+    return <HomeShimmer />;
   }
 
   const filters = [
@@ -85,9 +90,7 @@ const Body = () => {
     {
       name: "Top Rated",
       filterFunc: () => {
-        const topRated = ListOfRes.filter(
-          (rest) => rest.info.avgRating > 4
-        );
+        const topRated = ListOfRes.filter((rest) => rest.info.avgRating > 4);
         SetUpdatedSearch(topRated);
       },
     },
@@ -125,17 +128,22 @@ const Body = () => {
 
       <div className="h-auto mx-24 mt-3 mb-5 ">
         <div className="flex justify-around pt-5 flex-wrap ">
-          <div className="flex-wrap  md:flex gap-6 m">
+          <div className="flex-wrap  md:flex gap-6 ">
             <div className="flex">
               <input
                 className="p-3 rounded-l-xl w-[400px] md:border-2 "
                 type="text"
                 placeholder="Search For Dishes & Restaurants"
                 value={InputValue}
-                onChange={(evt) => { SetInputValue(evt.target.value); }}
+                onChange={(evt) => {
+                  SetInputValue(evt.target.value);
+                }}
                 onKeyDown={handleKeyDown}
               />
-              <button className="bg-[#F35800] rounded-r-lg text-white p-3" onClick={handleSearch}>
+              <button
+                className="bg-[#F35800] rounded-r-lg text-white p-3"
+                onClick={handleSearch}
+              >
                 <img src={search} width={"20px"} alt="search" />
               </button>
             </div>
@@ -144,7 +152,8 @@ const Body = () => {
                 <button
                   key={index}
                   className={`border px-3 shadow-sm rounded-[18px] ${
-                    activeButton === filter.name && "border-4 font-bold text-[#fc8019]"
+                    activeButton === filter.name &&
+                    "border-4 font-bold text-[#fc8019]"
                   }`}
                   onClick={() => {
                     filter.filterFunc();
@@ -158,16 +167,18 @@ const Body = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 gap-3 place-items-center px-[10px] pt-3">
-          {UpdatedSearch.map((res) => (
-            <Link to={"restaurant/" + res.info.id} key={res.info.id}>
-              {res.info.veg ? (
-                <ProResCardList resDATA={res} />
-              ) : (
-                <ResCard resDATA={res} />
-              )}
-            </Link>
-          ))}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 gap-3 place-items-center px-[10px] pt-3 max-w-[1050px] ">
+            {UpdatedSearch.map((res) => (
+              <Link to={"restaurant/" + res.info.id} key={res.info.id}>
+                {res.info.veg ? (
+                  <ProResCardList resDATA={res} />
+                ) : (
+                  <ResCard resDATA={res} />
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </>

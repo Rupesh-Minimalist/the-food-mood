@@ -50,10 +50,9 @@ export const locationObject = [
 export const CATEGORY_IMG_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
 
-export const RESTAURANT_LIST =
-  "https://swiggato-server.onrender.com/api/restaurants?lat=19.1889541&lng=72.835543&page_type=DESKTOP_WEB_LISTING";
+export const RESTAURANT_LIST ="https://swiggato-server.onrender.com/api/restaurants?lat=19.1889541&lng=72.835543&page_type=DESKTOP_WEB_LISTING";
 
-export const RESTAURANT_LIST2="https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"  
+export const RESTAURANT_LIST2="https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"  
 
 export const MENU_API = `https://swiggato-server.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=19.1889541&lng=72.835543&submitAction=ENTER&restaurantId=`;
 

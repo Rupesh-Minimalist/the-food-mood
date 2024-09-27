@@ -28,6 +28,7 @@ const ResMenu = () => {
     totalRatingsString,
     areaName,
   } = ResInfo?.cards[2]?.card?.card?.info; // destructuring
+  
   const { itemCards } =
     ResInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 

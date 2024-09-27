@@ -3,6 +3,7 @@ import { CATEGORY_IMG_URL } from "../utils/constants";
 
 const Categories = ({ carouselImages }) => {
   const handleScrollLeft = () => {
+    console.log("clickeddddddd")
     const foodCategory = document.querySelector(".categories");
     foodCategory.scrollLeft = foodCategory.scrollLeft - 480;
   };
